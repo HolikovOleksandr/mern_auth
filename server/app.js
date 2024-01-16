@@ -8,22 +8,24 @@ import handleValidationError from "./middlewares/handleValidationError.js";
 
 dotenv.config();
 const PORT = process.env.PORT || 8888;
-const app = express();
 
 mongoose
   .connect(process.env.DB_URI)
   .then(() => console.log("Db successfuly connected"))
-  .catch((error) => console.error("Db connecting errore: " + error));
+  .catch((error) => console.error("Error: " + error));
+
+const app = express();
+app.use(express.json());
+app.use(cors());
 
 app.post("/register", registerValidator, handleValidationError, register);
 // app.post('/login')
 // app.post('/me')
 
-app.use(express.json());
-app.use(cors());
-
 app.listen(PORT, (error) => {
   if (error) {
     console.error(error);
-  } else console.log(`Server runing on port: ${PORT}`);
+  }
+
+  console.log(`Server runing on port: ${PORT}`);
 });

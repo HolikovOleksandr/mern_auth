@@ -1,4 +1,3 @@
-import exp from "constants";
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema(
@@ -6,7 +5,7 @@ const UserSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
-      uniqe: true,
+      unique: true,
     },
     passwordHash: {
       type: String,

@@ -1,4 +1,3 @@
-import exp from "constants";
 import { validationResult } from "express-validator";
 
 export default (req, res, next) => {
